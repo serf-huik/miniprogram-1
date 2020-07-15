@@ -4,7 +4,7 @@
   <!-- 用户 openid -->
   <view class="userinfo">
     <button 
-      open-type="getUserInfo" 
+      open-type="getUserInfo"
       bindgetuserinfo="onGetUserInfo"
       class="userinfo-avatar"
       style="background-image: url({{avatarUrl}})"
