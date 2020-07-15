@@ -1,0 +1,99 @@
+数据绑定
+/*
+   text 相当于 web中的 span标签 行内元素 不会换行
+   view 相当于 web中的 div标签  块级元素 自动换行
+   checkbox 相当于web中复选框标签
+  */
+/*字符串*/
+<view>{{msg}}</view>
+/*数字类型*/
+<view>{{num}}</view>
+/*bool类型*/
+<view>是否是女生？：{{isgirl}}</view>
+/*对象类型*/
+<view>{{person.age}}</view>
+<view>{{person.weight}}</view>
+<view>{{person.height}}</view>
+/*在标签的属性中使用* 在调试器中wxml看标签属性*/
+<view data-num='{{num}}'>自定义属性</view>
+/*使用bool类型充当属性  checked--   字符串和花括号中不能加括号*/
+<view>
+  <checkbox checked="{{isChecked}}"></checkbox>
+</view>
+
+运算
+/* 1.可以在花括号中 加入 表达式/语句
+   2.表达式指：数字运算、字符串拼接、三元表达式等
+   3.语句指：复杂的代码段：if else switch do while for......*/
+<view>{{1+1}}</view>
+<view>{{'1'+'1'}}</view>
+<view>{{11%2===0?'偶数':'奇数'}}</view>
+
+列表循环
+/*1.wx:for="双花括号+数组"  wx:for-item="循环项的名称" wx:for-index="循环项的索引" 
+  2.wx:key="唯一的值"用来提高列表渲染的性能
+      wx:key 绑定一个普通的字符串时，那么这个字符串名称肯定是循环数组中的对象的唯一属性 
+      wx:key="*this"  就表示你的数组是一个普通的数组  *this表示是循环项
+      [1,2,3,4,5,6]
+      ["1","2","333","adaf"]
+  3.当出现数组的嵌套循环时，尤其要注意以下绑定名称不要重名
+       wx:for-item="item"  wx:for-index="index" 
+  4.默认情况下不写上述代码，小程序也会把循环项的名称和索引的名称也叫做item和index
+    只有一层循环时 上述代码也可以省略
+  */
+<view>
+  <view  wx:for="{{list}}" wx:for-item="item"  wx:for-index="index"   wx:key="id">
+     索引：{{index}}
+     --
+     值：{{item.name}}
+  </view>
+</view>
+对象循环
+/*  1.wx:for="花括号+对象" wx:for-item="对象的值"  wx:for-index="对象的属性" 
+    2.循环对象的时候，最好把item和index的名称都修改一下
+      wx:for-index="key"  wx:for-item="value"*/
+<view>
+  <view wx:for="{{person}}"  wx:for-index="key"  wx:for-item="value"  wx:key="age">
+    属性：{{key}}
+    --
+    值：{{value}} 
+  </view>
+</view>
+
+block标签
+1.相当于占位符
+2.写代码的时候可以看该标签，但是小程序会将其移除
+3.当要循环某些数据或者渲染某些内容，如果不想加外标签，可以用block标签进行占位
+<view>
+  <block wx:for="{{list}}"  wx:for-item="item"  wx:for-index="index" wx:key="id" class="mylist">
+     索引：{{index}}
+     --
+     值：{{item.name}}
+  </block>
+</view>
+
+条件渲染
+1.wx:if="花括号+true/false"
+   1 if,else,if else 
+     wx:if
+     wx:elif
+     wx:else  当第一个第二个属性都不满足时可以用第三个属性来表示
+2.hidden
+  1 在标签上直接加入属性 hidden
+  2 hidden="花括号+true "或"花括号+false"
+  以上两种形式都能实现让标签显示或者隐藏
+3.如何应用
+  1 当标签不是频繁的切换显示时 优先使用 wx:if
+    切换显示的方式：直接把标签从页面结构给移除掉
+  2.当标签频繁切换时 优先使用hidden
+    通过添加样式的方式来切换显示
+    hidden属性不要和样式display同时使用
+<view>
+  <view>条件渲染</view>
+  <view wx:if="{{istrue}}">显示</view>
+  <view wx:if="{{true}}">1</view>
+  <view wx:elif="{{false}}">2</view>
+  <view wx:else>3</view>
+  <view hidden >hidden1</view>
+  <view hidden="{{false}}">hidden2</view>
+</view>

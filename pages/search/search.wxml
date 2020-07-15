@@ -1,0 +1,16 @@
+1.需要给input标签绑定一个input事件：绑定关键字为bindinput
+2.如何获取输入框的值：通过事件源对象获取 e.detail.value
+3.把输入框的值 复制到 data当中，不能直接this.data.num=e.detail.value和 this.num=e.detail.value
+ 而是用： this.setData({
+   num:e.detail.value
+ }) ----------简单的双向绑定
+4.按钮写好后需要加入一个点击事件
+  1.bindtap
+  2.无法在小程序事件中直接传参
+  3.通过自定义属性方式来传参
+  4.事件源中获得自定义属性
+<input type="text" bindinput="handleInput"/>
+<button bindtap="handletap" data-operation="{{1}}">+</button>
+<button bindtap="handletap" data-operation="{{-1}}">-</button>
+<view>{{num}}</view>
+----------------------------------------------

@@ -1,0 +1,4 @@
+<view class="container">
+    <input placeholder="请输入运单号"/> 
+    <button type="default">查询 </button>
+</view>

@@ -1,0 +1,9 @@
+导航组件 navigatior
+o 块级元素 默认会换行  可以直接加入高度和宽度
+1 url 要跳转的页面路径，可以放绝对路径也可以放相对路径
+2 target 要跳转到当前小程序页面还是其他小程序页面 默认值self,也可为miniprogram 表示其他小程序页面
+3 open-type 跳转方式
+  1 navigate 默认值 保留当前页面，跳转到应用内的某个页面，但是不能跳到 tabbar 页面
+
+<navigator url="/pages/demo1/demo1">图片</navigator>
+<navigator open-type="switchTab" url="/pages/mine/mine">tabbar页面</navigator>
