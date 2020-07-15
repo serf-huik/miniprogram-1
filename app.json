@@ -1,5 +1,6 @@
 {
   "pages":[ 
+    "pages/todolist/todolist",
     "pages/demo5/demo5",
     "pages/demo4/demo4",
     "pages/demo3/demo3",
@@ -8,7 +9,6 @@
     "pages/mine/mine",
      "pages/index/index",
     "pages/search/search",
-    "pages/todolist/todolist",
     "pages/logs/logs"
   ],
   "window":{
